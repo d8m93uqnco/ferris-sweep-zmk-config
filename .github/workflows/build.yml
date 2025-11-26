@@ -23,7 +23,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: zmkfirmware/zmk-build-arm:2.5
+      image: zmkfirmware/zmk-build-arm:4.1-branch
     needs: matrix
     name: Build
     strategy:
@@ -90,7 +90,7 @@ jobs:
             cp build/zephyr/zmk.hex "build/artifacts/${{ steps.variables.outputs.artifact-name }}.hex"
           fi
       - name: Archive (${{ steps.variables.outputs.display-name }})
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: firmware
           path: build/artifacts
